@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-
+//
 
 // Number of signals and lamps on a per-floor basis (excl sensor)
 #define N_BUTTONS 3
@@ -34,7 +34,9 @@ static const int button_channel_matrix[N_FLOORS][N_BUTTONS] = {
     {BUTTON_UP4, BUTTON_DOWN4, BUTTON_COMMAND4},
 };
 
-static int floor_indicator_lights_matrix [N_FLOORS] = { // DENNE HAR VI LAGET SELV - lagrer om floor_inditator_lights er på eller ikke. HURRA
+
+//The following code we added ourselves////////////////////////////////////////////////////////////////
+static int floor_indicator_lights_matrix [N_FLOORS] = { //Keeps track of which floor indicator light that's on
   0 , 0 , 0 , 0
 };
 
@@ -44,7 +46,7 @@ void set_floor_indicator_lights_matrix(int floor){
   }
   floor_indicator_lights_matrix [floor] = 1;
 }
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -71,7 +73,7 @@ int elev_init(void) {
     elev_set_door_open_lamp(0);
     elev_set_floor_indicator(0);
 
-    //Dette har me gjort sjøv:)
+    //The following code we added ourselves////////////////////////////////////////////////////////////////
     empty_que();
     if (elev_get_floor_sensor_signal() ==-1){
       elev_set_motor_direction(DIRN_UP);
@@ -83,7 +85,7 @@ int elev_init(void) {
     current_state=IDLE;
     current_direction=DIRN_STOP;
     printf("Elev_init is finished");
-
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Return success.
     return 1;
 }
@@ -156,19 +158,6 @@ void elev_set_floor_indicator(int floor) {
     floor_indicator_lights_matrix[floor]=1;
     //
 }
-//Denna funksjonen har me laga sjøv:)
-int elev_get_floor_indicator_matrix(int etasje){
-  return floor_indicator_lights_matrix[etasje];
-}
-int get_lamp_channel_matrix(int floor, elev_button_type_t button){
-  return lamp_channel_matrix[floor][button];
-}
-int get_current_direction(void){
-  return current_direction;
-}
-void set_current_direction(elev_motor_direction_t dir){
-  current_direction=dir;
-}
 
 int elev_get_button_signal(elev_button_type_t button, int floor) {
     assert(floor >= 0);
@@ -195,5 +184,17 @@ void elev_set_button_lamp(elev_button_type_t button, int floor, int value) {
     else
         io_clear_bit(lamp_channel_matrix[floor][button]);
 }
-
-//funksjoner vi har laget selv
+//The following code we added ourselves///////////////////////////////////////////////////////////////////////////////////////
+int elev_get_floor_indicator_matrix(int etasje){
+  return floor_indicator_lights_matrix[etasje];
+}
+int get_lamp_channel_matrix(int floor, elev_button_type_t button){
+  return lamp_channel_matrix[floor][button];
+}
+int get_current_direction(void){
+  return current_direction;
+}
+void set_current_direction(elev_motor_direction_t dir){
+  current_direction=dir;
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -25,13 +25,14 @@ typedef enum tag_elev_motor_direction {
     DIRN_STOP = 0,
     DIRN_UP = 1
 } elev_motor_direction_t;
-//laget selv----------------
 
+
+//The following code we added ourselves////////////////////////////////////////////////////////////////////////////
 static elev_motor_direction_t current_direction;
-
 int get_current_direction(void);
 void set_current_direction(elev_motor_direction_t dir);
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 /**
   Sets the motor direction of the elevator.
   @param dirn New direction of the elevator.
@@ -119,11 +120,9 @@ int elev_get_button_signal(elev_button_type_t button, int floor);
   @param value Non-zero value turns lamp on, 0 turns lamp off.
 */
 void elev_set_button_lamp(elev_button_type_t button, int floor, int value);
-
-//Denna har me laga sjøv:)
+//The following code we added ourselves////////////////////////////////////////////////////////////////////////////
 int elev_get_floor_indicator_matrix(int temp_etasje);
 int get_lamp_channel_matrix(int floor, elev_button_type_t button);
 void set_floor_indicator_lights_matrix(int floor);
-//
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #endif // #ifndef __INCLUDE_DRIVER_H__

@@ -97,26 +97,3 @@ void print_que(void){ // printer kø for testing
     printf("\n");
   }
 }
-
-
-void testing(void){ //funksjon for å teste ting && tang && tare (string hehehehe)
-  empty_que();
-  print_que();
-  add_order_to_que(1,ORDER_WITHOUT_DIRECTION);
-  add_order_to_que(2,ORDER_UP);
-  add_order_to_que(3,ORDER_DOWN);
-  add_order_to_que(2,ORDER_UP);
-  add_order_to_que(4,ORDER_UP);
-  printf("\n");
-  print_que();
-  delete_order_from_que(1);
-  printf("\n");
-  print_que();
-  printf("\n");
-  printf("%d",check_if_should_stop(1, ORDER_UP));
-  printf("\n");
-  printf("%d",check_if_should_stop(3, ORDER_DOWN));
-  printf("\n");
-  printf("%d",check_if_should_stop(3, ORDER_UP));
-  printf("\n");
-}
