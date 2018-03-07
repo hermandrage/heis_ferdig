@@ -20,13 +20,11 @@ void read_up_and_down_buttons(void) {
   for (int etg = 0 ; etg<N_FLOORS ; ++etg){
     if (etg<N_FLOORS-1){
       if (elev_get_button_signal(BUTTON_CALL_UP,etg)){
-        printf("HOHOHO!");
         add_order_to_que(etg, ORDER_UP);
       }
     }
     if(etg>0){
       if (elev_get_button_signal(BUTTON_CALL_DOWN,etg)){
-        printf("HOHOHO!");
         add_order_to_que(etg, ORDER_DOWN);
       }
     }
