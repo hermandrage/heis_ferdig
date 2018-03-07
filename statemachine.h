@@ -1,10 +1,8 @@
 
 void set_floor_variables(void);
 int get_current_floor(void);
-void print_status();
+void print_status(void);
 
-void set_dir_before_stopped(int activate); 
-int get_dir_before_stopped(void);
 typedef enum state_type {
   IDLE = 0,
   DOOR_OPEN = 1,

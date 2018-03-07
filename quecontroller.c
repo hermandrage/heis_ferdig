@@ -68,7 +68,6 @@ void add_order_to_que(int floor,order_dir direction){
     //printf("Order allready exists");
     return;
   }
-  printf("No ERROR \n");
   for (int order_nr = 0 ; order_nr < nr_possible_orders ; ++ order_nr){
     if (que[order_nr][0] == -1 && que[order_nr][1]== NO_ORDER){
       que[order_nr][0] = floor;

@@ -11,13 +11,7 @@
 
 int current_floor=-1;
 
-int dir_before_stopped=-1;
-int get_dir_before_stopped(void){
-  return dir_before_stopped;
-}
-void set_dir_before_stopped(int activate){
-  dir_before_stopped=activate;
-}
+
 int get_current_floor(void) {
   return current_floor;
 }
@@ -32,7 +26,7 @@ void set_floor_variables(void){
 }
 
 
-void print_status(){
+void print_status(void){
   printf("QUE:\n");
   print_que();
   printf("\n");
@@ -80,7 +74,7 @@ void run_states(void){
         //////////------------------------------------------------------------------------------------
 
         case DOOR_OPEN:// HER STARTER STATEN
-        
+
         if (current_direction!=DIRN_STOP){//Stopper heisen
           current_direction=DIRN_STOP;
           elev_set_motor_direction(DIRN_STOP);
@@ -96,7 +90,7 @@ void run_states(void){
         		delete_order_from_que(0);
         	}
         	elev_set_door_open_lamp(0);
-       
+
         	if (next_order== -1){
         		current_state=IDLE;
             print_que();
@@ -113,7 +107,7 @@ void run_states(void){
 
 
         }
-      
+
         read_all_buttons();
         update_all_lights();
         break;
